@@ -1,5 +1,15 @@
 module.exports = function(grunt){
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		banner: '/*! /n* <%= pkg.title || pkg.name %> - v<%= pkg.version %> \n* Copyright'+
+		'(c) <% grunt.template.today("yyyy") %> <% pkg.autho\ r %>'
+		/*
+		concat:{
+			js:{
+				src: ['src/js/*.js'],
+				dest: 'dist/scripts.js'
+			}
+		}
 		copy:{
 			html:{
 				files:[{
@@ -8,7 +18,7 @@ module.exports = function(grunt){
 				}]
 			}
 		}
-		/*connect:{
+		connect:{
 			server:{
 				options:{
 					port:3000,
@@ -28,12 +38,13 @@ module.exports = function(grunt){
 			}
 		}*/
 	});
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	/*grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	/*grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.registerTask('default', ['watch']);
 	grunt.registerTask('server', ['connect:server:keepalive']);*/
-	grunt.registerTask('default', ['copy:html']);
+	grunt.registerTask('default', ['concat:js']);
 };
 
 //grunt server  e depois grunt (2 abas )
