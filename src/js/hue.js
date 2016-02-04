@@ -1,1 +1,4 @@
-alert('abc 1');
+var example = {
+   bar : 'bar',
+   foo: 'foo'
+}
