@@ -1,8 +1,20 @@
 module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		banner: '/*! /n* <%= pkg.title || pkg.name %> - v<%= pkg.version %> \n* Copyright'+
-		'(c) <% grunt.template.today("yyyy") %> <% pkg.autho\ r %>'
+		banner: '/*! \n* <%= pkg.title || pkg.name %> - v<%= pkg.version %>' +
+		 '\n* Copyright (c) <%= '+
+		'grunt.template.today("yyyy") %> <%= pkg.autho\r %> '+
+		'\n* <%= pkg.homepage ? pkg.homepage : "" %>' +
+		'\n*/ \n\n',
+		concat:{
+			options:{
+				banner: '<%= banner %>'
+			},
+			js: {
+				src: ['src/js/*.js'],
+				dest: 'dist/scripts.js'
+			}
+		}
 		/*
 		concat:{
 			js:{
